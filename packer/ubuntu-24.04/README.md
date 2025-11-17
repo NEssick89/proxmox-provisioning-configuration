@@ -4,4 +4,4 @@ This directory contains Packer templates and cloud-init files for building a Pro
 
 ## Acknowledgments
 
-The initial Packer template is adapted from the `[Pumba98/proxmox-packer-templates](https://github.com/Pumba98/proxmox-packer-templates)` repository. This project customizes and extends that work for a Proxmox-based automation workflow.
+The initial Packer template is adapted from the `Pumba98/proxmox-packer-templates` repository. This project customizes and extends that work for a Proxmox-based automation workflow.
