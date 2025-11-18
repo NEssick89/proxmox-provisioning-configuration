@@ -1,5 +1,18 @@
 # renovate: datasource=custom.ubuntuLinuxRelease
 
+variable "proxmox_api_url" {
+  type = string
+}
+
+variable "proxmox_token_id" {
+  type = string
+}
+
+variable "proxmox_token_secret" {
+  type      = string
+  sensitive = true
+}
+
 source "proxmox-iso" "ubuntu_24_04" {
     vm_name = "ubuntu-24-04-template"
     
