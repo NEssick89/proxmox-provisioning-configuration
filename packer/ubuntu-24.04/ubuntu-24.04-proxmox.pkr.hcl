@@ -1,5 +1,14 @@
 # renovate: datasource=custom.ubuntuLinuxRelease
 
+packer {
+  required_plugins {
+    proxmox = {
+      source  = "github.com/hashicorp/proxmox"
+      version = ">= 1.1.0"
+    }
+  }
+}
+
 variable "proxmox_api_url" {
   type = string
 }
@@ -74,7 +83,7 @@ source "proxmox-iso" "ubuntu_24_04" {
    
   ssh_username = var.ssh_username
   ssh_password = var.ssh_password
-  ssh_timeout  = "20m"
+  ssh_timeout  = "30m"
 }
 
 
