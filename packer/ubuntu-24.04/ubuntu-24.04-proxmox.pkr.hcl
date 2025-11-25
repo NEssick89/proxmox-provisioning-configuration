@@ -50,19 +50,23 @@ source "proxmox-iso" "ubuntu_24_04" {
     vm_name = "ubuntu-24-04-template"
     
     proxmox_url  = var.proxmox_api_url
-    token_id     = var.proxmox_token_id
-    token_secret = var.proxmox_token_secret
+    username     = var.proxmox_token_id
+    token        = var.proxmox_token_secret
     node         = var.proxmox_node
 
     iso_file         = "ubuntu-24.04.2-live-server-amd64.iso"
     iso_url          = "https://old-releases.ubuntu.com/releases/24.04/ubuntu-24.04.2-live-server-amd64.iso"
     iso_checksum     = "file:https://old-releases.ubuntu.com/releases/24.04/SHA256SUMS"
     iso_storage_pool = var.proxmox_iso_storage
-    storage_pool     = var.proxmox_disk_storage
 
     cores            = 2
     memory           = 4096
-    disk_size        = "32G"
+
+   disks {
+      disk_size    = "32G"
+      storage_pool = var.proxmox_disk_storage
+      type         = "scsi"
+    }
     
     http_directory = "./http/ubuntu"
     boot_wait      = "5s"
