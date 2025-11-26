@@ -32,11 +32,6 @@ variable "proxmox_disk_storage" {
   default = "vm-storage"
 }
 
-variable "proxmox_iso_storage" {
-  type    = string
-  default = "local"
-}
-
 variable "ssh_username" {
   type = string
 }
