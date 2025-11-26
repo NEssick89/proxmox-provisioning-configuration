@@ -49,10 +49,11 @@ variable "ssh_password" {
 source "proxmox-iso" "ubuntu_24_04" {
     vm_name = "ubuntu-24-04-template"
     
-    proxmox_url  = var.proxmox_api_url
-    username     = var.proxmox_token_id
-    token        = var.proxmox_token_secret
-    node         = var.proxmox_node
+    proxmox_url              = var.proxmox_api_url
+    username                 = var.proxmox_token_id
+    token                    = var.proxmox_token_secret
+    node                     = var.proxmox_node
+    insecure_skip_tls_verify = true
 
   boot_iso {  
     type             = "scsi"
