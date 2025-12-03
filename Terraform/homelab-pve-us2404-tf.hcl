@@ -9,43 +9,43 @@ terraform {
 }
 
 resource "proxmox_virtual_environment_vm" "vm" {
-  node_name     = var.node
+  node_name     = "home"
   vm_id         = var.vm_id
   name          = var.vm_name
   description   = var.description
   tags          = var.tags
-  bios          = var.bios
-  machine       = var.machine
-  tablet_device = var.tablet
+  bios          = "seabios"
+  machine       = "1440fx"
+  tablet_device = false
 
   operating_system {
-    type = var.os_type
+    type = "l26"
   }
 
   agent {
-    enabled = var.qemu_guest_agent
+    enabled = true
   }
 
   clone {
-    node_name = var.template_node
-    vm_id     = var.template_id
-    full      = var.full_clone
+    node_name = "home"
+    vm_id     = "900"
+    full      = true
   }
 
   cpu {
-    cores = var.vcpu
-    type  = var.vcpu_type
-    numa  = var.numa
+    cores = 2
+    type  = "host"
+    numa  = false
   }
 
   memory {
-    dedicated = var.memory
-    floating  = var.memory_floating
+    dedicated = 4096
+    floating  = false
   }
 
   vga {
-    type   = var.display_type
-    memory = var.display_memory
+    type   = "std"
+    memory = 16
   }
 
   dynamic "efi_disk" {
